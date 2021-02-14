@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
 
   def authenticate_user
     if @current_user == nil
-      flash[:notice] = t('notice.login_needed')
+      flash[:notice] = "ログインが必要です。"
       redirect_to new_session_path
     end
   end
