@@ -1,0 +1,12 @@
+<h1>投稿内容</h1>
+<%= form_with(model: @post, url: posts_path, local: true) do |f| %>
+  <div class="panel-body row">
+    <p class="post-content"><%= @post.content %></p>
+    <%= f.hidden_field :content %>
+  </div>
+  <%= f.submit("投稿する", class:"btn btn-primary") %>
+<% end %>
+<%= form_with(model:@post, url:new_post_path, local:true, method:"get") do |f| %>
+  <%= f.hidden_field :content %>
+  <%= f.submit("戻る", name: "back", class:"btn btn-warning") %>
+<% end %>
