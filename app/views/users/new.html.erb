@@ -1,23 +1,25 @@
 <div class="form">
-<% if @user.errors.any? %>
-  <div id="error_explanation">
-    <h2><%= pluralize(@user.errors.count, "error") %> prohibited this <%= @user.name %> from being saved:</h2>
-    <ul>
-    <% @user.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
-    </ul>
-  </div>
-<% end %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this <%= @user.name %> from being saved:</h2>
+      <ul>
+        <% @user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
 
-<%= form_with(model: @user, local: true) do |f| %>
-  <h1>新規登録</h1>
-  <%= f.text_field :name, class: "form-group form-control form-control-lg",:placeholder => "フルネーム" %>
-  <%= f.email_field :email ,class: "form-group form-control form-control-lg",:placeholder => "メールアドレス" %>
-  <%= f.password_field :password ,class: "form-group form-control form-control-lg", :placeholder => "パスワード" %>
-  <%= f.password_field :password_confirmation ,class: "form-group form-control form-control-lg", :placeholder => "パスワード（確認用）" %>
-  <%= f.submit "登録する" %>
-  <% end %><hr><br>
-  <p>アカウントをお持ちですか？</p>
-  <%= link_to "ログインする", new_session_path, class:"btn btn-success btn-md btn-block"  %>
+  <div class="side">
+  </div>
+    <%= form_with(model: @user, local: true) do |f| %>
+      <p>登録して友達の写真や動画をチェックしよう</p>
+      <%= f.text_field :name ,class: "form-group form-control form-control-lg",:placeholder => "フルネーム" %>
+      <%= f.email_field :email ,class: "form-group form-control form-control-lg",:placeholder => "メールアドレス" %>
+      <%= f.password_field :password ,class: "form-group form-control form-control-lg", :placeholder => "パスワード" %>
+      <%= f.password_field :password_confirmation, class: "form-group form-control form-control-lg", :placeholder => "パスワード（確認用）" %>
+      <%= f.submit "登録する", class:"btn btn-primary btn-md btn-block" %>
+    <% end %><hr><br>
+    <p>アカウントをお持ちですか？</p>
+    <%= link_to "ログインする", new_session_path, class:"btn btn-success btn-md btn-block"  %>
 </div>

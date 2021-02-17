@@ -3,10 +3,13 @@
   <div class="panel-body row">
     <p class="post-content"><%= @post.content %></p>
     <%= f.hidden_field :content %>
+    <%= image_tag @post.image.url(:thumb) %>
+    <%= f.hidden_field :image_cache %>
   </div>
   <%= f.submit("投稿する", class:"btn btn-primary") %>
 <% end %>
 <%= form_with(model:@post, url:new_post_path, local:true, method:"get") do |f| %>
   <%= f.hidden_field :content %>
+  <%= f.hidden_field :image_cache %>
   <%= f.submit("戻る", name: "back", class:"btn btn-warning") %>
 <% end %>

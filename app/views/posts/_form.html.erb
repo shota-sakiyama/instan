@@ -11,6 +11,9 @@
   <% end %>
     <%= f.text_field :content, class: 'form-control input-lg',:placeholder => "メッセージをシェアしよう"%>
     <%= f.hidden_field :content　%>
+    <%= image_tag @post.image.url(:thumb) if @post.image && @post.image.url %>
+    <%= f.file_field(:image,{:class => 'btn-primary'})  %>
+    <%= f.hidden_field :image_cache　%>
     <div class="text-right">
       <%= link_to '戻る', posts_path, class:"btn btn-warning" %>
       <%= f.submit("投稿する", class:"btn btn-primary") %>
