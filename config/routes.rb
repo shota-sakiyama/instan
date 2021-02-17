@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'favorites/index'
   get 'posts/index'
   get 'sessions/new'
   resources :users
