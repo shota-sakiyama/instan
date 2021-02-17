@@ -1,2 +1,45 @@
-<h1>Favorites#index</h1>
-<p>Find me in app/views/favorites/index.html.erb</p>
+<h2>いいねした写真</h2>
+<% for post in @posts %>
+  <div class="container">
+    <div class="row text">
+      <div class= "col-sm-8 col-sm-offset-2">
+          <div class="post-prof">
+            <% if post.user.image && post.user.image.url %>
+              <%= image_tag post.user.image.url(:thumb100), class: "img-circle" %>
+            <% else %>
+              <img src="/avatar.png">
+            <% end %>
+            <%= link_to post.user.name, [post.user] %>
+          </div>
+          <div class="post-img">
+            <% if post.image && post.image.url %>
+              <%= image_tag post.image.url ,class: "img-responsive" %>
+            <% end %>
+          </div>
+
+          <div class = "post-icon">
+            <% if post.user.id != current_user.id %>
+              <% if current_user.already_favorited?(post) %>
+                <%= link_to post_favorites_path(post), method: :delete do %>
+                  <span class="glyphicon glyphicon-heart" aria-hidden="true" style="font-size: 36px"></span>
+                <% end %>
+                <%= post.favorites.count %>
+              <% else %>
+                <%= link_to post_favorites_path(post), method: :post do %>
+                  <span class="glyphicon glyphicon-heart-empty" aria-hidden="true" style="font-size: 36px"></span>
+                <% end %>
+                <%= post.favorites.count %>
+              <% end %>
+            <% end %>
+          <div>
+
+            <div class="post-text">
+              <p><%= post.content %></p>
+              <%= post.created_at.strftime("投稿日：%Y年%m月%d日") %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

@@ -1,8 +1,12 @@
-<h1>Log in</h1>
-<%= form_with(scope: :session, url: sessions_path, local: true) do |f| %>
-  <%= f.label :email %>
-  <%= f.email_field :email %>
-  <%= f.label :password %>
-  <%= f.password_field :password %>
-  <%= f.submit "Log in" %>
-<% end %>
+<div class="row">
+	<div class="form">
+		<h1 class="logo-name">Instantgram</h1>
+		<%= form_with(scope: :session, url: sessions_path, local: true) do |f| %>
+			<%= f.email_field :email, class: "form-group form-control form-control-lg",:placeholder => "メールアドレス" %>
+			<%= f.password_field :password, class: "form-group form-control form-control-lg",:placeholder => "パスワード" %>
+			<%= f.submit "ログイン", class:"btn btn-success btn-md btn-block" %>
+		<% end %><hr><br>
+			<p>アカウントをお持ちでないですか？</p>
+			<%= link_to "登録する", new_user_path, class:"btn btn-primary btn-md btn-block"  %>
+	</div>
+</div>

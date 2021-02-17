@@ -1,27 +1,55 @@
 <p><%= notice %></p>
 <% for post in @posts %>
-  <div class="panel panel-default post-panel">
-    <div class="panel-body row">
-      <div class= "col-sm-1">
-        <img src="/avatar.png" height="40px" widht="40px">
-      </div>
-      <div class= "col-sm-1">
-        <div class="post-prof">
-          <%= link_to post.user.name, post_path(post.id) %></td>
-        </div>
-      </div>
-      <div class= "col-sm-10">
-        <p class="post-content"><%= post.content %></p>
-        <% if post.user.id == current_user.id %>
-          <div class="post-links">
-            <%= link_to edit_post_path(post.id) ,data: {confirm: "本当に編集していいですか？"} do %>
-                <span class="glyphicon glyphicon-pencil g-links" aria-hidden="true"></span>
+  <div class="container">
+    <div class="row text">
+      <div class= "col-sm-8 col-sm-offset-2">
+          <div class="post-prof">
+            <% if post.user.image && post.user.image.url %>
+              <%= image_tag post.user.image.url(:thumb100), class: "img-circle" %>
+            <% else %>
+              <img src="/avatar.png">
             <% end %>
-            <%= link_to post_path(post.id), method: :delete ,data: { confirm: '本当に削除してよろしいですか？' } do %>
-                <span class="glyphicon glyphicon-trash g-links" aria-hidden="true"></span>
+            <%= link_to post.user.name, [post.user] %>
+          </div>
+          <div class="post-img">
+            <% if post.image && post.image.url %>
+              <%= image_tag post.image.url ,class: "img-responsive" %>
             <% end %>
           </div>
-        <% end %>
+
+          <div class = "post-icon">
+            <% if post.user.id != current_user.id %>
+              <% if current_user.already_favorited?(post) %>
+                <%= link_to post_favorites_path(post), method: :delete do %>
+                  <span class="glyphicon glyphicon-heart" aria-hidden="true" style="font-size: 36px"></span>
+                <% end %>
+                <%= post.favorites.count %>
+              <% else %>
+                <%= link_to post_favorites_path(post), method: :post do %>
+                  <span class="glyphicon glyphicon-heart-empty" aria-hidden="true" style="font-size: 36px"></span>
+                <% end %>
+                <%= post.favorites.count %>
+              <% end %>
+            <% end %>
+
+            <% if post.user.id == current_user.id %>
+              <div class="post-links">
+                <%= link_to edit_post_path(post.id) do %>
+                    <span class="glyphicon glyphicon-pencil g-links" aria-hidden="true"></span>
+                <% end %>
+                <%= link_to post_path(post.id), method: :delete ,data: { confirm: '本当に削除してよろしいですか？' } do %>
+                    <span class="glyphicon glyphicon-trash g-links" aria-hidden="true"></span>
+                <% end %>
+              </div>
+            <% end %>
+          <div>
+
+            <div class="post-text">
+              <p><%= post.content %></p>
+              <%= post.created_at.strftime("投稿日：%Y年%m月%d日") %>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>

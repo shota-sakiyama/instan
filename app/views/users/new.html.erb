@@ -13,6 +13,7 @@
   <div class="side">
   </div>
     <%= form_with(model: @user, local: true) do |f| %>
+      <h1 class="logo-name">Instantgram</h1>
       <p>登録して友達の写真や動画をチェックしよう</p>
       <%= f.text_field :name ,class: "form-group form-control form-control-lg",:placeholder => "フルネーム" %>
       <%= f.email_field :email ,class: "form-group form-control form-control-lg",:placeholder => "メールアドレス" %>
