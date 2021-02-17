@@ -1,3 +1,48 @@
-// Place all the styles related to the posts controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: https://sass-lang.com/
+.row {
+  margin-bottom: 15px;
+}
+
+.row > * {
+  background: #fff;
+}
+
+.col-sm-8.col-sm-offset-2 {
+  border: 1px solid #333;
+  padding: 0;
+  margin-bottom: 15px;
+}
+
+.post-prof {
+  text-align: left;
+  font-weight: bold;
+  padding: 10px;
+  margin: 0;
+  border-bottom: 0.5px solid black;
+}
+
+.post-prof > img {
+  border-radius: 50%;
+  border: 1px solid #333;
+  height: 50px;
+  width: 50px;
+  margin-right : 10px;
+  };
+
+.post-img {
+  padding: 0px;
+  margin-bottom: 15px;
+  max-width:100%;
+}
+
+.post-links {
+  font-size: 20px;
+  max-width: 30%;
+  align-items: baseline;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.post-text {
+  padding: 10px;
+  margin: 10px;
+}
