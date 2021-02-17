@@ -1,4 +1,4 @@
-<h1>Sign up</h1>
+<div class="form">
 <% if @user.errors.any? %>
   <div id="error_explanation">
     <h2><%= pluralize(@user.errors.count, "error") %> prohibited this <%= @user.name %> from being saved:</h2>
@@ -9,14 +9,15 @@
     </ul>
   </div>
 <% end %>
+
 <%= form_with(model: @user, local: true) do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-  <%= f.label :email %>
-  <%= f.email_field :email %>
-  <%= f.label :password %>
-  <%= f.password_field :password %>
-  <%= f.label :password_confirmation %>
-  <%= f.password_field :password_confirmation %>
-  <%= f.submit "Create my account" %>
-<% end %>
+  <h1>新規登録</h1>
+  <%= f.text_field :name, class: "form-group form-control form-control-lg",:placeholder => "フルネーム" %>
+  <%= f.email_field :email ,class: "form-group form-control form-control-lg",:placeholder => "メールアドレス" %>
+  <%= f.password_field :password ,class: "form-group form-control form-control-lg", :placeholder => "パスワード" %>
+  <%= f.password_field :password_confirmation ,class: "form-group form-control form-control-lg", :placeholder => "パスワード（確認用）" %>
+  <%= f.submit "登録する" %>
+  <% end %><hr><br>
+  <p>アカウントをお持ちですか？</p>
+  <%= link_to "ログインする", new_session_path, class:"btn btn-success btn-md btn-block"  %>
+</div>
