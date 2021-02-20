@@ -14,9 +14,9 @@
  *= require_tree .
  *= require_self
  */
- @import "bootstrap-sprockets";
+ /* @import "bootstrap-sprockets";
  @import "bootstrap";
- @import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
+ @import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap"); */
 
  body {
    background: rgba(243, 241, 241, 0.884);
