@@ -9,7 +9,7 @@
             <% else %>
               <img src="/avatar.png">
             <% end %>
-            <%= link_to post.user.name, [post.user] %>
+            <%= link_to post.user.name, post_path(post.id) %>
           </div>
           <div class="post-img">
             <% if post.image && post.image.url %>
@@ -34,7 +34,7 @@
 
             <% if post.user.id == current_user.id %>
               <div class="post-links">
-                <%= link_to edit_post_path(post.id) do %>
+                <%= link_to edit_post_path(post.id) ,data: {confirm: "本当に編集していいですか？"} do %>
                     <span class="glyphicon glyphicon-pencil g-links" aria-hidden="true"></span>
                 <% end %>
                 <%= link_to post_path(post.id), method: :delete ,data: { confirm: '本当に削除してよろしいですか？' } do %>

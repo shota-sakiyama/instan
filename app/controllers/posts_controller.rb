@@ -37,7 +37,6 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
-    @post = current_user.posts.build(post_params)
   end
 
   def update

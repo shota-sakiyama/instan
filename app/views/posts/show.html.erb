@@ -1,2 +1,4 @@
-<h1>Posts#show</h1>
-<p>Find me in app/views/posts/show.html.erb</p>
+<p>内容: <%= @post.content %></p>
+ <%= image_tag @post.image.url %>
+
+ <%= link_to '戻る', posts_path, class:"btn btn-warning" %>
